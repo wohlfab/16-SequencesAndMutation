@@ -10,8 +10,8 @@ for ITERATING through SEQUENCES, including selections from:
   -- Looking at two sequences in parallel
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Brandon Wohlfarth.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -103,10 +103,19 @@ def shortest_string(strings):
       :type strings: list[str]   or tuple(str)
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
+    index = 0
+    val = len(strings[0])
+    for k in range(1, len(strings)):
+        if len(strings[k]) <= val:
+            if len(strings[k]) == val:
+                val = len(strings[k])
+            else:
+                val = len(strings[k])
+                index = k
+    return strings[index]
 
 def run_test_index_of_largest_number():
     """ Tests the   index_of_largest_number   function. """
@@ -180,10 +189,19 @@ def index_of_largest_number(numbers, n):
 
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
+    index = 0
+    val = numbers[0]
+    for k in range(1, n):
+        if numbers[k] >= val:
+            if numbers[k] == val:
+                val = numbers[k]
+            else:
+                val = numbers[k]
+                index = k
+    return index
 
 # ----------------------------------------------------------------------
 # Some problems iterate (loop) through the sequence accessing TWO
@@ -235,10 +253,18 @@ def number_of_stutters(s):
        :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
+    add = 0
+    val = s[0]
+    high = 0
+    for k in range(1, len(s)):
+        if s[k] == val:
+            add += 1
+        else:
+            val = s[k]
+    return add
 
 def run_test_is_palindrome():
     """ Tests the   is_palindrome   function. """
@@ -308,7 +334,7 @@ def is_palindrome(s):
       :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -317,7 +343,13 @@ def is_palindrome(s):
     #   above are particularly good examples to work by hand.
     ####################################################################
     # ------------------------------------------------------------------
-
+    list = ''
+    for k in range(len(s)-1, -1, -1):
+        list = list + s[k]
+    if list == s:
+        return True
+    else:
+        return False
 
 # ----------------------------------------------------------------------
 # Some problems loop (iterate) through two or more sequences
@@ -375,10 +407,16 @@ def count_same(sequence1, sequence2):
       type: sequence2: tuple or list or string
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
+    total = 0
+    for k in range(0, len(sequence1)):
+        val1 = sequence1[k]
+        val2 = sequence2[k]
+        if val1 ==val2:
+            total+=1
+    return total
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
